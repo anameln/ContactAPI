@@ -1,9 +1,13 @@
 Api::Application.routes.draw do
   resources :users,
   only: [:index, :create, :show, :update, :destroy] do
-    resources :contacts, only: [:index]  
+    resources :contacts, only: [:index]
+    resources :comments, only: [:index, :create, :destory]
   end
-  resources :contacts, only: [:create, :show, :update, :destroy]
+  resources :contacts, only: [:create, :show, :update, :destroy] do
+    resources :comments, only: [:index, :create, :destory]  
+  end
+
   resources :contact_shares, only: [:create, :destroy]
 
   # get 'users' => 'users#index'

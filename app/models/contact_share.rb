@@ -11,8 +11,7 @@
 
 class ContactShare < ActiveRecord::Base
   # user_id points to the user with whom the contact has been shared
-
   belongs_to :user
   belongs_to :contact
-  
+  has_many :comments, :as => :commentable, dependent: :destroy
 end
