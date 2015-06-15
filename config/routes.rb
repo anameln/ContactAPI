@@ -3,9 +3,14 @@ Api::Application.routes.draw do
   only: [:index, :create, :show, :update, :destroy] do
     resources :contacts, only: [:index]
     resources :comments, only: [:index, :create, :destory]
+    member do
+      get 'favorite'
+    end
+    
   end
   resources :contacts, only: [:create, :show, :update, :destroy] do
-    resources :comments, only: [:index, :create, :destory]  
+    resources :comments, only: [:index, :create, :destory]
+
   end
 
   resources :contact_shares, only: [:create, :destroy]

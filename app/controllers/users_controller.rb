@@ -49,7 +49,12 @@ class UsersController < ApplicationController
         json: user.errors.full_messages, status: :unprocessable_entity
       )
     end
+  end
 
+  def favorite
+    user = User.find(params[:id])
+    contacts = user.contacts.select { |contact| contact.favorite }
+    render json: contacts
   end
 
   private

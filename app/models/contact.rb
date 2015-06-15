@@ -12,7 +12,7 @@
 
 class Contact < ActiveRecord::Base
   # user_id points to the OWNER of a contact
-  validates :email, :user_id, presence: true, uniqueness: true
+  validates :email, :user_id, presence: true
 
   belongs_to :user
   has_many :contact_shares
