@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    users = User.all
 
-    render json: @users
+    render json: users
   end
 
   def create
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     if user
-      User.delete(user)
+      user.destroy
       render json: user
     else
       render(
@@ -55,6 +55,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:username)
   end
 end
